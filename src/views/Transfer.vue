@@ -14,12 +14,12 @@
       <div class="assets-overview">
         <div class="asset-item" :class="{ animate: isAnimated }">
           <div class="asset-label">总资产 (元)</div>
-          <div class="asset-value">125,896.73</div>
+          <div class="asset-value">425,896.73</div>
         </div>
         <div class="asset-stats">
           <div class="stat-item" :class="{ animate: isAnimated }">
             <div class="stat-label">昨日收益</div>
-            <div class="stat-value">+23.56</div>
+            <div class="stat-value">+93.56</div>
           </div>
           <div class="stat-item" :class="{ animate: isAnimated }">
             <div class="stat-label">保障</div>
@@ -363,9 +363,11 @@ export default {
   align-items: center;
   font-size: 14px;
   color: #333;
+  flex-direction: column;
 }
 .opportunity-icon {
   margin-right: 5px;
+  padding-bottom: 5px;
 }
 
 /* 基金列表 */

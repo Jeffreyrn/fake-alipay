@@ -45,16 +45,97 @@
       <div class="mini-programs">
         <div class="program-row">
           <div class="program-item" v-for="item in programsRow1" :key="item.id">
-            <div class="program-icon">{{ item.icon }}</div>
+            <div class="program-icon"> 
+              <img v-if="item.url" :src="item.url" alt=""> 
+              <span v-else>{{ item.icon }}</span>
+            </div>
             <div class="program-name">{{ item.name }}</div>
           </div>
         </div>
         <div class="program-row">
           <div class="program-item" v-for="item in programsRow2" :key="item.id">
-            <div class="program-icon">{{ item.icon }}</div>
+            <div class="program-icon">
+              
+              <img v-if="item.url" :src="item.url" alt=""> 
+              <span v-else>{{ item.icon }}</span>
+            </div>
             <div class="program-name">{{ item.name }}</div>
           </div>
         </div>
+        <!-- 最近消息模块 -->
+      <div class="recent-messages">
+        <div class="messages-header">
+          <div class="header-title">最近消息</div>
+          <div class="header-count">11条最新消息<span class="red-dot"></span><van-icon name="arrow" /></div>
+        </div>
+        <div class="messages-list">
+          <div class="message-item">
+            <img src="../assets/jizhang.svg" class="message-icon" alt="">
+            <div class="message-content">
+              <div class="message-title">记账本</div>
+              <div class="message-desc">你的记账日报已更新</div>
+            </div>
+            <div class="message-time">1分钟前</div>
+          </div>
+          <div class="message-item">
+            <img src="../assets/mayi.svg" class="message-icon" alt="">
+            <div class="message-content">
+              <div class="message-title">蚂蚁森林</div>
+              <div class="message-desc">你有即将过期的绿色能量</div>
+            </div>
+            <div class="message-time">3小时前</div>
+          </div>
+        </div>
+      </div>
+      <!-- 财富生活模块 -->
+      <div class="finance-module">
+        <div class="module-header">
+          <div class="module-title">
+            <img  src="../assets/rmb.svg" alt=""> 财富生活</div>
+          <van-icon name="arrow" class="module-more" />
+        </div>
+        <div class="text-carousel">
+          <div class="carousel-wrapper" ref="wealthWrapper">
+            <div class="carousel-item" v-for="(item, index) in wealthMessages" :key="index">
+              {{ item }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 理财成长助手模块 -->
+            <!-- 理财成长助手模块 -->
+      <div class="finance-module">
+        <div class="module-header">
+          <div class="module-title">
+            <img src="../assets/rmb.svg" alt=""> 
+            理财成长助手</div>
+          <van-icon name="arrow" class="module-more" />
+        </div>
+        <div class="finance-cards">
+          <div class="finance-card gold-card">
+            <div class="card-icon"> <img src="../assets/gold.svg" alt=""></div>
+            <div class="card-title">黄金价格</div>
+            <div class="card-value">789.5元/克</div>
+            <div class="card-change">↑0.2%</div>
+          </div>
+          <div class="row">
+            <div class="finance-card profit-card">
+            <div class="card-icon"><van-icon name="gold-coin" size="28" /></div>
+            <div class="card-title">收益排行</div>
+            <div class="card-value">+128.5元</div>
+          </div>
+          <div class="finance-card new-card">
+            <div class="card-icon"> <van-icon name="new-arrival" size="35"/></div>
+            
+            <div class="card-desc">黄金积存</div>
+            <div class="card-tag">1元起投</div>
+          </div>
+          </div>
+          
+        </div>
+      </div>
+      
       </div>
     </div>
   </div>
@@ -63,6 +144,17 @@
 <script>
 import { Icon, Button } from 'vant'
 
+import { ref, onMounted, watch } from 'vue'
+import feizhu from '../assets/feizhu.svg'
+import didi from '../assets/didi.svg'
+import moreicon from '../assets/more.svg'
+import hongbao from '../assets/hongbao.svg'
+import gaode from '../assets/gaode.svg'
+import jiaofei from '../assets/jiaofei.svg'
+import wangshang from '../assets/wangshang.svg'
+import gupiao from '../assets/gupiao.svg'
+import shimin from '../assets/shimin.svg'
+import huilv from '../assets/huilv.svg'
 export default {
   components: {
     VanIcon: Icon,
@@ -71,22 +163,99 @@ export default {
   setup() {
     // 小程序数据
     const programsRow1 = [
-      { id: 1, name: '股票', icon: '股' },
-      { id: 2, name: '市民中心', icon: '民' },
-      { id: 3, name: '网商银行', icon: '银' },
-      { id: 4, name: '铁路12306', icon: '铁' },
-      { id: 5, name: '生活缴费', icon: '缴' }
+      { id: 1, name: '股票', url: gupiao },
+      { id: 2, name: '市民中心', url: shimin },
+      { id: 3, name: '网商银行', url: wangshang },
+      { id: 4, name: '高地打车', url: gaode },
+      { id: 5, name: '生活缴费', url: jiaofei }
     ]
     
     const programsRow2 = [
-      { id: 6, name: '汇率换算', icon: '汇' },
-      { id: 7, name: '飞猪旅行', icon: '旅' },
-      { id: 8, name: '支付宝红包', icon: '红' },
-      { id: 9, name: '我的小程序', icon: '我' },
-      { id: 10, name: '更多', icon: '更' }
+      { id: 6, name: '汇率换算', url: huilv },
+      { id: 7, name: '飞猪旅行', url: feizhu },
+      { id: 8, name: '红包', url: hongbao },
+      { id: 9, name: '滴滴打车', url:didi },
+      { id: 10, name: '更多', url: moreicon }
     ]
-    
-    return { programsRow1, programsRow2 }
+    // 财富生活轮播消息
+    const wealthMessages = [
+      '国内金价: 786.52元/克 涨0.23%',
+      '攒金全新上线，首次购买享额外5%收益',
+      '黄金基金近7日年化3.21%',
+      '今日10:00 限量黄金券发放'
+    ]
+
+    // 理财成长助手轮播消息
+    const growthMessages = [
+      '收益第一名公布: 张某某 本月收益12.5%',
+      '进阶理财本月收益: 4.86%',
+      '昨日最赚: 科技主题基金 涨3.2%',
+      '交易记录: 您的定投已成功扣款'
+    ]
+
+    // 轮播元素引用
+    const wealthWrapper = ref(null)
+    const growthWrapper = ref(null)
+
+    // 文字轮播动画
+    const startCarousel = (wrapper, duration = 5000) => {
+      if (!wrapper.value) return
+
+      const container = wrapper.value
+      const items = container.children
+      if (items.length <= 1) return
+
+      // 复制第一组元素用于无缝滚动
+      const clone = container.innerHTML
+      container.innerHTML += clone
+
+      let index = 0
+      const itemHeight = items[0].offsetHeight
+      const totalHeight = itemHeight * items.length
+
+      const animate = () => {
+        index++
+        container.style.transition = 'transform 0.5s ease'
+        container.style.transform = `translateY(-${index * itemHeight}px)`
+
+        // 滚动到复制元素时重置
+        if (index >= items.length / 2) {
+          setTimeout(() => {
+            container.style.transition = 'none'
+            container.style.transform = 'translateY(0)'
+            index = 0
+          }, 500)
+        }
+      }
+
+      // 启动轮播定时器
+      const timer = setInterval(animate, duration)
+
+      // 清理函数
+      return () => clearInterval(timer)
+    }
+
+    // 组件挂载后启动轮播
+    onMounted(() => {
+      const wealthCleanup = startCarousel(wealthWrapper)
+      const growthCleanup = startCarousel(growthWrapper, 6000)
+
+      // 组件卸载时清理定时器
+      return () => {
+        wealthCleanup && wealthCleanup()
+        growthCleanup && growthCleanup()
+      }
+    })
+
+    return { 
+      // ... existing returns ...
+      programsRow1,
+      programsRow2,
+      wealthMessages,
+      growthMessages,
+      wealthWrapper,
+      growthWrapper
+    }
   }
 }
 </script>
@@ -97,6 +266,7 @@ export default {
   background-color: #1677FF;
   flex:1;
   padding-top: 46px;
+  overflow: scroll;
 }
 
 /* 顶部栏样式 */
@@ -110,7 +280,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 15px;
-  background-color: transparent;
+  background-color: #1677FF;
   z-index: 10;
 }
 
@@ -182,6 +352,8 @@ export default {
 
 /* 内容区域 */
 .content {
+  flex:1;
+  overflow: scroll;
   padding: 0;
 }
 
@@ -207,7 +379,7 @@ export default {
 
 /* 小程序区域 */
 .mini-programs {
-  background-color: white;
+  background-color: #fefefe;
   border-radius: 12px 12px 0 0;
   padding: 15px 0;
   margin-top: 15px;
@@ -215,7 +387,7 @@ export default {
 .program-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .program-item {
   display: flex;
@@ -224,9 +396,9 @@ export default {
   width: 20%;
 }
 .program-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #f5f5f5;
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -234,8 +406,235 @@ export default {
   margin-bottom: 5px;
   font-weight: bold;
 }
+.program-icon img{
+  width: 100%;
+  height: 100%;
+}
 .program-name {
   font-size: 12px;
   color: #333;
+}
+/* 最近消息模块样式 */
+.recent-messages {
+  background-color: white;
+  border-radius: 12px;
+  margin: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.header-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+.header-count {
+  font-size: 12px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.red-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #FF3B30;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.message-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 20px;
+  color: #1677FF;
+  background-color: #f0f7ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.message-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.message-desc {
+  margin-left: 5px;
+  font-size: 13px;
+  line-height: 14px;
+  color: #999;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* 理财模块通用样式 */
+.finance-module {
+  background-color: white;
+  border-radius: 12px;
+  margin: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.module-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.module-title img{
+  width: 18px;
+  margin-right: 3px;
+}
+.module-more {
+  color: #999;
+  font-size: 16px;
+}
+
+/* 文字轮播样式 */
+.text-carousel {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-wrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.carousel-item {
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 添加进入动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.finance-module {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 为两个模块设置不同的动画延迟 */
+.finance-module:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.finance-cards {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  height:200px;
+}
+.finance-cards .row{
+  flex:1;
+  margin-left:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.finance-card {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  border-radius: 12px;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.finance-cards .row .finance-card{
+  
+  width: 100%;
+  display: flex;
+  padding: 5px;
+}
+.gold-card .card-icon { color: #FFD700; }
+.profit-card .card-icon { color: #00B42A; }
+.new-card .card-icon { color: #FF7D00; }
+.card-icon img{
+  width:50px;
+  height:50px;
+}
+.card-title {
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.card-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-change {
+  color: #00B42A;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.card-tag {
+  display: inline-block;
+  background: #FFF0E6;
+  color: #FF7D00;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
 </style>
