@@ -11,7 +11,7 @@
       <!-- 搜索框 -->
       <div class="search-box">
         <van-icon name="search" class="search-icon" />
-        <input type="text" placeholder="黄金" class="search-input" />
+        <input @click="goToSearch" type="text" placeholder="黄金" class="search-input" />
         <button class="search-btn">搜索</button>
       </div>
       
@@ -143,6 +143,7 @@
 
 <script>
 import { Icon, Button } from 'vant'
+import { useRouter } from 'vue-router'
 
 import { ref, onMounted, watch } from 'vue'
 import feizhu from '../assets/feizhu.svg'
@@ -166,7 +167,7 @@ export default {
       { id: 1, name: '股票', url: gupiao },
       { id: 2, name: '市民中心', url: shimin },
       { id: 3, name: '网商银行', url: wangshang },
-      { id: 4, name: '高地打车', url: gaode },
+      { id: 4, name: '高德打车', url: gaode },
       { id: 5, name: '生活缴费', url: jiaofei }
     ]
     
@@ -246,8 +247,15 @@ export default {
         growthCleanup && growthCleanup()
       }
     })
+    const router = useRouter()
+    // ... 现有代码 ...
 
+    // 跳转到搜索页面
+    const goToSearch = () => {
+      router.push('/search')
+    }
     return { 
+      goToSearch,
       // ... existing returns ...
       programsRow1,
       programsRow2,

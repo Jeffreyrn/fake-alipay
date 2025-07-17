@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <router-view />
-    <tabbar route>
+    <router-view v-slot="{ Component }">
+  <transition name="slide-left">
+    <component :is="Component" />
+  </transition>
+</router-view>
+    <tabbar route v-if="!route.meta.hideTab">
       <tabbar-item icon="wap-home-o" to="/home">首页</tabbar-item>
       <tabbar-item icon="gold-coin-o" to="/transfer">理财</tabbar-item>
       <tabbar-item icon="chat-o" to="/message">消息</tabbar-item> <!-- 新增消息导航项 -->
@@ -37,7 +41,7 @@ export default {
       }
     )
 
-    return { active, unreadCount }
+    return { active, unreadCount,route }
   }
 }
 </script>
