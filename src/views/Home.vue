@@ -16,7 +16,7 @@
       </div>
       
       <!-- 圆形加号按钮 -->
-      <van-button class="add-btn" shape="circle" icon="plus" size="large" />
+      <van-button class="add-btn" shape="circle" icon="plus" size="medium" />
     </div>
 
     <!-- 主内容区 -->

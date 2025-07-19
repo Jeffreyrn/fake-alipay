@@ -5,7 +5,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <tabbar route v-if="!route.meta.hideTab">
+    <tabbar route v-if="!route.meta.hideTab" class="tabtab">
       <tabbar-item icon="wap-home-o" to="/home">首页</tabbar-item>
       <tabbar-item icon="gold-coin-o" to="/transfer">理财</tabbar-item>
       <tabbar-item icon="chat-o" to="/message">消息</tabbar-item> <!-- 新增消息导航项 -->
@@ -51,6 +51,9 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+.tabtab{
+  padding-bottom: 20px !important;
 }
 .slide-enter-active,
 .slide-leave-active {
