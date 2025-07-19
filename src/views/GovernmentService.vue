@@ -53,7 +53,7 @@
 
     <!-- 实用服务提示 -->
     <div class="utility-tip" style="display:flex;align-items: center; margin: 0 16px 16px; background: #fff;  padding: 12px; border-radius: 4px;box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1);">
-      <div style="font-weight: bold; color: #E63946; margin-bottom: 4px;">实用<br>服务</div>
+      <div style="font-weight: bold; color: #E63946; margin-bottom: 0px;">实用<br>服务</div>
       <div style="padding-left:20px;color: #111; font-size: 15px;">高考录取进行中，来这里一键查询<br>录取结果~</div>
     </div>
 
@@ -286,7 +286,8 @@ const goBack = () => {
 }
 
 const goNext = () => {
-  router.push('/certificates')
+  //router.push('/certificates')
+  router.push('/start-camera')
 }
 </script>
 

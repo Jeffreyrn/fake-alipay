@@ -6,7 +6,7 @@
         <van-icon name="arrow-left" class="module-more" size="20"/>
       </div>
       <div class="title">国家政务服务平台</div>
-      <div class="actions">
+      <div class="actions" @click="goHome">
         <span class="icon"><van-icon name="ellipsis" /></span>
         <span class="icon"><van-icon name="close" class="nav-icon close"  /></span>
       </div>
@@ -57,13 +57,13 @@ const goBack = () => {
 // 我要纠错
 const reportError = () => {
   // 实现纠错功能
-  alert('我要纠错功能将在这里实现')
+  //alert('我要纠错功能将在这里实现')
 }
 
 // 查看纠错记录
 const viewErrorRecords = () => {
   // 实现查看纠错记录功能
-  alert('查看纠错记录功能将在这里实现')
+  //alert('查看纠错记录功能将在这里实现')
 }
 
 // 添加其他证照
@@ -71,13 +71,17 @@ const addOtherLicense = () => {
   // 跳转到添加证照页面
   router.push('/add-certificate')
 }
+
+const goHome = () => {
+  router.replace('/home')
+}
 </script>
 
 <style scoped>
 /* 基础样式 */
 .license-not-found-page {
   background-color: white;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* 导航栏样式 */

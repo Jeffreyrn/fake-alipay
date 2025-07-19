@@ -24,6 +24,22 @@ const routes = [
     component: () => import('../views/LicenseNotFound.vue'),
     meta: { hideTab: true } // 不显示底部tab
   },
+  {
+    path: '/camera',
+    name: 'Camera',
+    component: () => import('../views/CameraPage.vue'),
+    meta: {
+      hideTab: true // 隐藏底部导航栏
+    }
+  },
+  {
+    path: '/start-camera',
+    name: 'StartCamera',
+    component: () => import('../views/CameraStart.vue'),
+    meta: {
+      hideTab: true // 隐藏底部导航栏
+    }
+  },
   { path: '/government', component: () => import('../views/GovernmentService.vue'), meta: { hideTab: true }}, // 新增政务服务页面路由
   { path: '/search', component: () => import('../views/Search.vue') } // 添加搜索页面路由
 ]

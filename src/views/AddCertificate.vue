@@ -112,6 +112,9 @@ const trafficCertificates = [
   justify-content: space-between;
   padding: 15px 16px;
   background-color: white;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .back-btn {
