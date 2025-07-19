@@ -12,6 +12,18 @@ const routes = [
     component: () => import('../views/Certificates.vue'),
     meta: { hideTab: true } // 不显示底部tab
   },
+  {
+    path: '/add-certificate',
+    name: 'AddCertificate',
+    component: () => import('../views/AddCertificate.vue'),
+    meta: { hideTab: true } // 不显示底部tab
+  },
+  {
+    path: '/license-not-found',
+    name: 'LicenseNotFound',
+    component: () => import('../views/LicenseNotFound.vue'),
+    meta: { hideTab: true } // 不显示底部tab
+  },
   { path: '/government', component: () => import('../views/GovernmentService.vue'), meta: { hideTab: true }}, // 新增政务服务页面路由
   { path: '/search', component: () => import('../views/Search.vue') } // 添加搜索页面路由
 ]

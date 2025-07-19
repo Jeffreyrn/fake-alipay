@@ -3,12 +3,12 @@
   <!-- 定义橙黄色渐变 -->
   <defs>
     <linearGradient id="buildingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFD700" /><!-- 亮金黄 -->
-      <stop offset="100%" stop-color="#FF8C00" /><!-- 深橙色 -->
+      <stop offset="0%" stop-color="#f3d843" /><!-- 亮金黄 -->
+      <stop offset="100%" stop-color="#f2ba76" /><!-- 深橙色 -->
     </linearGradient>
     <linearGradient id="accentGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFA500" /><!-- 橙色 -->
-      <stop offset="100%" stop-color="#FF4500" /><!-- 橙红色 -->
+      <stop offset="0%" stop-color="#f7e78e" /><!-- 橙色 -->
+      <stop offset="100%" stop-color="#f2ba76" /><!-- 橙红色 -->
     </linearGradient>
   </defs>
 

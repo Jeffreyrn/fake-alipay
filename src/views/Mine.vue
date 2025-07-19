@@ -2,8 +2,8 @@
   <div class="mine">
     <van-nav-bar title="我的" fixed />
     <div class="user-info">
-      <van-image src="https://img01.yzcdn.cn/vant/cat.jpeg" round />
-      <div class="user-name">支付宝用户</div>
+      <img src="../assets/21752892929_.pic_thumb.jpg" round />
+      <div class="user-name">焕林</div>
     </div>
     <van-cell-group>
       <van-cell title="余额" value="98,765.43元" />
@@ -37,7 +37,8 @@ export default {
   align-items: center;
   padding: 30px 0;
 }
-.van-image {
+.user-info img {
+  border-radius: 100%;
   width: 80px;
   height: 80px;
   margin-bottom: 15px;

@@ -20,7 +20,7 @@
           <span style="margin-left: 4px;">▼</span>
         </div>
         <div class="user-info" style="display: flex; align-items: center;">
-          <img src="../assets/vue.svg" alt="Avatar" class="avatar" style="width: 28px; height: 28px; border-radius: 50%; margin-right: 8px;">
+          <img src="../assets/21752892929_.pic_thumb.jpg" alt="Avatar" class="avatar" style="width: 28px; height: 28px; border-radius: 50%; margin-right: 8px;">
           <span>Hi, *潇</span>
         </div>
       </div>
@@ -282,7 +282,7 @@ const router = useRouter()
 
 // 添加返回上一页的方法
 const goBack = () => {
-  router.go(-2)
+  router.replace('/home')
 }
 
 const goNext = () => {

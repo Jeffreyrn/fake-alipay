@@ -4,7 +4,7 @@
     <div class="navbar">
       <div class="back-btn" @click="goBack"><van-icon name="arrow-left" class="module-more" size="20"/><div class="title">我的证照</div></div>
       
-      <div class="actions" @click="goBack">
+      <div class="actions" @click="goHome">
         <span class="icon"><van-icon name="ellipsis" /></span>
         <span class="icon"><van-icon name="close" class="nav-icon close"  /></span>
       </div>
@@ -40,11 +40,13 @@ const router = useRouter()
 const goBack = () => {
   router.go(-1)
 }
-
+const goHome = () => {
+  router.replace('/home')
+}
 // 添加证照按钮点击事件
 const addCertificate = () => {
   // 这里可以添加实际添加证照的逻辑
-  alert('添加证照功能将在这里实现')
+  router.push('/add-certificate')
 }
 </script>
 
